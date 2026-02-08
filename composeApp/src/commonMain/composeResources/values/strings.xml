@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kelly Connect</string>
+    <string name="connection_title">Kelly Connect</string>
+    <string name="connection_subtitle">KBLS/KLS Controller Configuration</string>
+    <string name="transport_usb">USB</string>
+    <string name="transport_bluetooth">Bluetooth</string>
+    <string name="transport_ble">BLE</string>
+    <string name="scan_devices">Scan Devices</string>
+    <string name="scanning">Scanning...</string>
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="connected">Connected</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="connecting">Connecting...</string>
+    <string name="tab_calibration">Calibration</string>
+    <string name="tab_monitor">Monitor</string>
+    <string name="read">Read</string>
+    <string name="write">Write</string>
+    <string name="read_zero">ReadZero</string>
+    <string name="start_monitor">Start Monitor</string>
+    <string name="stop_monitor">Stop Monitor</string>
+    <string name="tips_default">TIPS: Select a parameter to see description</string>
+    <string name="warning_write">Warning: Incorrect parameter writes can damage the controller. Always verify values before writing.</string>
+    <string name="error_read">Read error</string>
+    <string name="error_write">Write error</string>
+    <string name="error_connection">Connection error</string>
+    <string name="read_complete">Read complete</string>
+    <string name="write_complete">Data Write Completely!</string>
+    <string name="device_not_opened">Device is not opened! Please open device first!</string>
+    <string name="data_read_error">Data Read Error, Maybe the controller no power-on or wire-disconnect!</string>
+    <string name="open_flash_error">Open Flash Failed!</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+</resources>

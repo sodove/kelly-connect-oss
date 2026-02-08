@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kelly Connect</string>
+    <string name="connection_title">Kelly Connect</string>
+    <string name="connection_subtitle">Настройка контроллеров KBLS/KLS</string>
+    <string name="transport_usb">USB</string>
+    <string name="transport_bluetooth">Bluetooth</string>
+    <string name="transport_ble">BLE</string>
+    <string name="scan_devices">Поиск устройств</string>
+    <string name="scanning">Поиск...</string>
+    <string name="connect">Подключить</string>
+    <string name="disconnect">Отключить</string>
+    <string name="connected">Подключено</string>
+    <string name="disconnected">Отключено</string>
+    <string name="connecting">Подключение...</string>
+    <string name="tab_calibration">Калибровка</string>
+    <string name="tab_monitor">Мониторинг</string>
+    <string name="read">Чтение</string>
+    <string name="write">Запись</string>
+    <string name="read_zero">Чтение нуля</string>
+    <string name="start_monitor">Старт мониторинга</string>
+    <string name="stop_monitor">Стоп мониторинга</string>
+    <string name="tips_default">ПОДСКАЗКА: Выберите параметр для просмотра описания</string>
+    <string name="warning_write">Внимание: Неправильная запись параметров может повредить контроллер. Всегда проверяйте значения перед записью.</string>
+    <string name="error_read">Ошибка чтения</string>
+    <string name="error_write">Ошибка записи</string>
+    <string name="error_connection">Ошибка подключения</string>
+    <string name="read_complete">Чтение завершено</string>
+    <string name="write_complete">Запись данных завершена!</string>
+    <string name="device_not_opened">Устройство не открыто! Сначала откройте устройство!</string>
+    <string name="data_read_error">Ошибка чтения данных. Возможно контроллер не включен или отсоединён кабель!</string>
+    <string name="open_flash_error">Ошибка открытия Flash!</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+</resources>
