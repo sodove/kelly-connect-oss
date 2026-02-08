@@ -1,8 +1,12 @@
 # Kelly Connect
 
+[![Build](https://github.com/sodove/kelly-connect/actions/workflows/build.yml/badge.svg)](https://github.com/sodove/kelly-connect/actions/workflows/build.yml)
+
 Kotlin Multiplatform application for configuring **Kelly KLS motor controllers** and monitoring **BMS battery packs**. Runs on Android and Desktop (JVM).
 
 Communicates with the controller over the ETS serial protocol via USB (FT232), Bluetooth Classic, or BLE. Connects to popular BMS systems (JK, JBD, ANT, Daly) over BLE for real-time cell-level battery monitoring.
+
+> For detailed protocol documentation see [PROTOCOL.md](PROTOCOL.md).
 
 ## Features
 
@@ -125,4 +129,4 @@ The controller communicates using 19-byte packets:
 
 ## License
 
-All rights reserved.
+Apache 2.0 with [Commons Clause](https://commonsclause.com/). You may use, modify, and redistribute this software freely, but you may not sell it or offer it as a paid service. See [LICENSE](LICENSE) for details.

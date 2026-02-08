@@ -31,8 +31,8 @@ enum class ControllerModel {
                 return Result.failure(UnsupportedControllerException("Module name too short: '$moduleName'"))
             }
 
-            val name3 = if (moduleName.length >= 4) moduleName.substring(1, 4) else ""
-            val name2 = if (moduleName.length >= 3) moduleName.substring(1, 3) else ""
+            val name3 = moduleName.substring(1, 4)
+            val name2 = moduleName.substring(1, 3)
 
             val isKBLS = name3 == "BLS" || name3 == "BSS" || name2 == "LS"
 
