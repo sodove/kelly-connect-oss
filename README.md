@@ -67,14 +67,15 @@ Communicates with the controller over the ETS serial protocol via USB (FT232), B
 
 | Component | Library | Version |
 |---|---|---|
-| Language | Kotlin Multiplatform | 2.1.0 |
-| UI | Compose Multiplatform | 1.7.3 |
-| Navigation | Decompose | 3.2.2 |
-| DI | Koin | 4.0.0 |
-| BLE | Kable | 0.33.0 |
-| Serial (Desktop) | jSerialComm | 2.11.0 |
-| Serial (Android) | usb-serial-for-android | 3.8.1 |
-| Coroutines | kotlinx-coroutines | 1.9.0 |
+| Language | Kotlin Multiplatform | 2.3.10 |
+| UI | Compose Multiplatform | 1.10.0 |
+| Navigation | Decompose | 3.4.0 |
+| DI | Koin | 4.1.1 |
+| BLE | Kable | 0.42.0 |
+| Serial (Desktop) | jSerialComm | 2.11.4 |
+| Serial (Android) | usb-serial-for-android | 3.10.0 |
+| Coroutines | kotlinx-coroutines | 1.10.2 |
+| Serialization | kotlinx-serialization | 1.10.0 |
 
 ## Project Structure
 
