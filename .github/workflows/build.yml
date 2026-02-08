@@ -2,9 +2,9 @@ name: Build
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 concurrency:
   group: build-${{ github.ref }}
@@ -38,7 +38,7 @@ jobs:
   android-apk:
     runs-on: ubuntu-latest
     needs: build
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/master'
 
     steps:
       - uses: actions/checkout@v4
@@ -65,7 +65,7 @@ jobs:
   desktop-jar:
     runs-on: ubuntu-latest
     needs: build
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/master'
 
     steps:
       - uses: actions/checkout@v4
@@ -92,7 +92,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
     needs: [ android-apk, desktop-jar ]
-    if: github.ref == 'refs/heads/main' && startsWith(github.event.head_commit.message, 'release:')
+    if: github.ref == 'refs/heads/master' && startsWith(github.event.head_commit.message, 'release:')
     permissions:
       contents: write
 

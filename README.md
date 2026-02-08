@@ -1,6 +1,6 @@
 # Kelly Connect
 
-[![Build](https://github.com/sodove/kelly-connect/actions/workflows/build.yml/badge.svg)](https://github.com/sodove/kelly-connect/actions/workflows/build.yml)
+[![Build](https://github.com/sodove/kelly-connect-oss/actions/workflows/build.yml/badge.svg)](https://github.com/sodove/kelly-connect-oss/actions/workflows/build.yml)
 
 Kotlin Multiplatform application for configuring **Kelly KLS motor controllers** and monitoring **BMS battery packs**. Runs on Android and Desktop (JVM).
 
