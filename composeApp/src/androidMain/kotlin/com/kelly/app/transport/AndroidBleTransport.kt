@@ -1,10 +1,8 @@
 package com.kelly.app.transport
 
-import android.content.Context
 import com.juul.kable.Peripheral
 import com.juul.kable.WriteType
 import com.juul.kable.characteristicOf
-import com.juul.kable.peripheral
 import com.kelly.app.data.transport.Transport
 import com.kelly.app.data.transport.TransportState
 import com.kelly.app.data.transport.TransportType
@@ -14,12 +12,15 @@ import kotlinx.coroutines.channels.Channel.Factory.UNLIMITED
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
 
 /**
  * BLE transport using Kable library.
  * Supports Nordic UART Service (NUS), HM-10, and CC254x BLE serial modules.
  */
-class AndroidBleTransport(private val context: Context) : Transport {
+@OptIn(ExperimentalUuidApi::class)
+class AndroidBleTransport() : Transport {
     private val _state = MutableStateFlow<TransportState>(TransportState.Disconnected)
     override val state: StateFlow<TransportState> = _state.asStateFlow()
     override val type = TransportType.BLE
@@ -63,17 +64,17 @@ class AndroidBleTransport(private val context: Context) : Transport {
             val bleScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
             scope = bleScope
 
-            val p = bleScope.peripheral(address)
+            val p = Peripheral(address)
             peripheral = p
 
             p.connect()
 
             // Auto-detect which BLE serial profile the device supports
-            val services = p.services ?: throw IllegalStateException("No services discovered")
-            val serviceUuids = services.map { it.serviceUuid.toString().uppercase() }.toSet()
+            val services = p.services.value ?: throw IllegalStateException("No services discovered")
+            val serviceUuids = services.map { svc -> svc.serviceUuid.toString().uppercase() }.toSet()
 
             val profile = knownProfiles.firstOrNull { bp ->
-                serviceUuids.any { it.equals(bp.serviceUuid, ignoreCase = true) }
+                serviceUuids.any { uuid -> uuid.equals(bp.serviceUuid, ignoreCase = true) }
             } ?: throw IllegalStateException(
                 "No compatible BLE serial service found. " +
                 "Supported: NUS, HM-10, CC254x. " +
@@ -83,8 +84,8 @@ class AndroidBleTransport(private val context: Context) : Transport {
 
             // Subscribe to notifications on the RX characteristic
             val rxCharacteristic = characteristicOf(
-                service = profile.serviceUuid,
-                characteristic = profile.rxCharUuid
+                service = Uuid.parse(profile.serviceUuid),
+                characteristic = Uuid.parse(profile.rxCharUuid)
             )
 
             observeJob = bleScope.launch {
@@ -120,8 +121,8 @@ class AndroidBleTransport(private val context: Context) : Transport {
         val profile = activeProfile ?: throw IllegalStateException("No BLE profile")
 
         val txCharacteristic = characteristicOf(
-            service = profile.serviceUuid,
-            characteristic = profile.txCharUuid
+            service = Uuid.parse(profile.serviceUuid),
+            characteristic = Uuid.parse(profile.txCharUuid)
         )
 
         // BLE MTU is typically 20 bytes for write without response.

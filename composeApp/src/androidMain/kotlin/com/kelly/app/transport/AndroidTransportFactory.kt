@@ -10,8 +10,6 @@ import android.os.Build
 import androidx.core.content.ContextCompat
 import com.juul.kable.Scanner
 import com.kelly.app.data.transport.*
-import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.withTimeoutOrNull
 
 class AndroidTransportFactory(private val context: Context) : TransportFactory {
@@ -37,7 +35,7 @@ class AndroidTransportFactory(private val context: Context) : TransportFactory {
         return when (type) {
             TransportType.USB -> AndroidUsbTransport(context)
             TransportType.BLUETOOTH_CLASSIC -> AndroidBluetoothClassicTransport()
-            TransportType.BLE -> AndroidBleTransport(context)
+            TransportType.BLE -> AndroidBleTransport()
             TransportType.MOCK -> MockTransport()
         }
     }

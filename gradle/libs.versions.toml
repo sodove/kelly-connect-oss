@@ -1,15 +1,15 @@
 [versions]
-kotlin = "2.1.0"
-agp = "8.7.3"
-compose-multiplatform = "1.7.3"
-decompose = "3.2.2"
-koin = "4.0.0"
-coroutines = "1.9.0"
-kable = "0.33.0"
-activity-compose = "1.9.3"
-jserialcomm = "2.11.0"
-usb-serial = "3.8.1"
-serialization = "1.7.3"
+kotlin = "2.3.10"
+agp = "8.10.0"
+compose-multiplatform = "1.10.0"
+decompose = "3.4.0"
+koin = "4.1.1"
+coroutines = "1.10.2"
+kable = "0.42.0"
+activity-compose = "1.12.3"
+jserialcomm = "2.11.4"
+usb-serial = "3.10.0"
+serialization = "1.10.0"
 
 [libraries]
 decompose-core = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }

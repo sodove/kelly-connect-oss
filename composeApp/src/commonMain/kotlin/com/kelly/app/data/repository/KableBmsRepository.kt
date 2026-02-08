@@ -1,9 +1,9 @@
 package com.kelly.app.data.repository
 
+import com.juul.kable.Peripheral
 import com.juul.kable.Scanner
 import com.juul.kable.WriteType
 import com.juul.kable.characteristicOf
-import com.juul.kable.peripheral
 import com.kelly.app.bms.*
 import com.kelly.app.domain.model.BmsData
 import com.kelly.app.domain.model.BmsType
@@ -11,6 +11,8 @@ import com.kelly.app.domain.repository.BmsDeviceInfo
 import com.kelly.app.domain.repository.BmsRepository
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
+import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
 
 /**
  * BLE-based BMS repository using Kable.
@@ -18,6 +20,7 @@ import kotlinx.coroutines.flow.*
  * Handles scanning, connecting, and polling/streaming data from various BMS types
  * (JK, JBD, ANT, Daly) using their respective protocol implementations.
  */
+@OptIn(ExperimentalUuidApi::class)
 class KableBmsRepository : BmsRepository {
 
     private val scope = CoroutineScope(Dispatchers.Default + SupervisorJob())
@@ -110,7 +113,7 @@ class KableBmsRepository : BmsRepository {
                 return Result.failure(IllegalStateException("Device not found. Please scan again."))
             }
 
-            val p = scope.peripheral(advertisement)
+            val p = Peripheral(advertisement)
             peripheral = p
 
             p.connect()
@@ -118,8 +121,8 @@ class KableBmsRepository : BmsRepository {
 
             // Set up notification observation
             val notifyChar = characteristicOf(
-                service = proto.uuids.serviceUuid,
-                characteristic = proto.uuids.notifyCharUuid
+                service = Uuid.parse(proto.uuids.serviceUuid),
+                characteristic = Uuid.parse(proto.uuids.notifyCharUuid)
             )
 
             observeJob = scope.launch {
@@ -136,8 +139,8 @@ class KableBmsRepository : BmsRepository {
 
             // Send handshake commands
             val writeChar = characteristicOf(
-                service = proto.uuids.serviceUuid,
-                characteristic = proto.uuids.writeCharUuid
+                service = Uuid.parse(proto.uuids.serviceUuid),
+                characteristic = Uuid.parse(proto.uuids.writeCharUuid)
             )
 
             for (cmd in proto.handshakeCommands()) {
